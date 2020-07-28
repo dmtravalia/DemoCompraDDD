@@ -8,8 +8,8 @@ namespace DemoCompra.Application.Interfaces
 {
     public interface ICompraAppService
     {
-        IEnumerable<CompraViewModel> ObterTodos();
-        CompraViewModel ObterPorId(Guid id);
+        Task<IEnumerable<CompraViewModel>> ObterTodos();
+        Task<CompraViewModel> ObterPorId(Guid id);
         void AdicionarCompra(CompraViewModel compra);
         void AtualizarCompra(CompraViewModel compra);
     }

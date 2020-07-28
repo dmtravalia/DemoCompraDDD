@@ -22,14 +22,14 @@ namespace DemoCompra.Infra.Data.Repositories
 
         public IUnitOfWork UnitOfWork => _context;
 
-        public IEnumerable<Compra> ObterTodos()
+        public async Task<IEnumerable<Compra>> ObterTodos()
         {
-            return _context.Compras.AsNoTracking().ToList();
+            return await _context.Compras.AsNoTracking().ToListAsync();
         }
 
-        public Compra ObterPorId(Guid id)
+        public async Task<Compra> ObterPorId(Guid id)
         {
-            return _context.Compras.Find(id);
+            return await _context.Compras.FindAsync(id);
         }
 
         public void Adicionar(Compra compra)

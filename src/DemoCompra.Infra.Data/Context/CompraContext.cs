@@ -22,7 +22,7 @@ namespace DemoCompra.Infra.Data.Context
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CompraContext).Assembly);
         }
 
-        public int Commit()
+        public bool Commit()
         {
             foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("DataCadastro") != null))
             {
@@ -39,7 +39,7 @@ namespace DemoCompra.Infra.Data.Context
                 }
             }
 
-            return base.SaveChanges();
+            return base.SaveChanges() > 0;
         }
     }
 }

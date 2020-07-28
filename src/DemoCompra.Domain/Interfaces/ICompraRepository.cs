@@ -9,8 +9,8 @@ namespace DemoCompra.Domain.Interfaces
 {
     public interface ICompraRepository : IRepository<Compra>
     {
-        IEnumerable<Compra> ObterTodos();
-        Compra ObterPorId(Guid id);
+        Task<IEnumerable<Compra>> ObterTodos();
+        Task<Compra> ObterPorId(Guid id);
 
 
         void Adicionar(Compra compra);

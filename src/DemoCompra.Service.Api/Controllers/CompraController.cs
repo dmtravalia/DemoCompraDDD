@@ -26,23 +26,16 @@ namespace DemoCompra.Service.Api.Controllers
 
 
         [HttpGet]
-        public IEnumerable<CompraViewModel> Get()
+        public async Task<IEnumerable<CompraViewModel>> Get()
         {
-            //Task<IEnumerable<CompraViewModel>> ll = _compraAppService.ObterTodos();
-
             //CompraViewModel c = new CompraViewModel();
             //c.Id = Guid.NewGuid();
             //c.Quantidade = 10;
-            //c.Descricao = "Castanha";
+            //c.Descricao = "Castanha4";
 
             //_compraAppService.AdicionarCompra(c);
 
-            //List<CompraViewModel> l = new List<CompraViewModel>();
-            //l.Add(c);
-            //return l.ToArray();
-
-
-            return _compraAppService.ObterTodos().ToArray();
+            return await _compraAppService.ObterTodos();
         }
 
         [HttpPost]

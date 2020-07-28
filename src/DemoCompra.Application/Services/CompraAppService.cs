@@ -21,14 +21,14 @@ namespace DemoCompra.Application.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<CompraViewModel> ObterTodos()
+        public async Task<IEnumerable<CompraViewModel>> ObterTodos()
         {
-            return _mapper.Map<IEnumerable<CompraViewModel>>(_compraRepository.ObterTodos());
+            return _mapper.Map<IEnumerable<CompraViewModel>>(await _compraRepository.ObterTodos());
         }
 
-        public CompraViewModel ObterPorId(Guid id)
+        public async Task<CompraViewModel> ObterPorId(Guid id)
         {
-            return _mapper.Map<CompraViewModel>(_compraRepository.ObterPorId(id));
+            return _mapper.Map<CompraViewModel>(await _compraRepository.ObterPorId(id));
         }
 
         public void AdicionarCompra(CompraViewModel compraViewModel)

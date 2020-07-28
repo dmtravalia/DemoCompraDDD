@@ -7,6 +7,6 @@ namespace DemoCompra.Domain.Core.Interfaces
 {
     public interface IUnitOfWork
     {
-        int Commit();
+        bool Commit();
     }
 }
