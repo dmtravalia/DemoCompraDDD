@@ -4,9 +4,6 @@ using DemoCompra.Domain.Interfaces;
 using DemoCompra.Infra.Data.Context;
 using DemoCompra.Infra.Data.Repositories;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DemoCompra.Infra.CrossCutting.IoC
 {

@@ -1,7 +1,6 @@
 ﻿using DemoCompra.Application.ViewModels;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace DemoCompra.Application.Interfaces

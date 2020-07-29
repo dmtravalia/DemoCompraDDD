@@ -1,9 +1,5 @@
 ﻿using DemoCompra.Domain.Core.Interfaces;
 using DemoCompra.Domain.Core.Models;
-using DemoCompra.Domain.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace DemoCompra.Domain.Models
 {
