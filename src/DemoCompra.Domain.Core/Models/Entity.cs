@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FluentValidation;
+using FluentValidation.Results;
+using System;
 
 namespace DemoCompra.Domain.Core.Models
 {
@@ -8,9 +10,24 @@ namespace DemoCompra.Domain.Core.Models
         public DateTime DataAtualizacao { get; protected set; }
         public DateTime DataCadastro { get; protected set; }
 
+        public bool IsValid() => ValidationResult.IsValid;
+        public ValidationResult ValidationResult { get; set; }
+
         protected Entity()
         {
             Id = Guid.NewGuid();
+            ValidationResult = new ValidationResult();
+        }
+
+        public bool Validate<TModel>(TModel model, AbstractValidator<TModel> validator)
+        {
+            ValidationResult = validator.Validate(model);
+            return ValidationResult.IsValid;
+        }
+
+        public void AdicionarErro(string mensagem)
+        {
+            ValidationResult.Errors.Add(new ValidationFailure(string.Empty, mensagem));
         }
 
         public override bool Equals(object obj)

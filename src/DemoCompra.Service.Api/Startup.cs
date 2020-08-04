@@ -2,6 +2,8 @@ using AutoMapper;
 using DemoCompra.Application.AutoMapper;
 using DemoCompra.Infra.CrossCutting.IoC;
 using DemoCompra.Infra.Data.Context;
+using DemoCompra.Service.Api.Filters;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -26,7 +28,7 @@ namespace DemoCompra.Service.Api
             services.AddDbContext<CompraContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddControllers();
+            services.AddControllers(o => o.Filters.Add<BadRequestFilter>()).AddFluentValidation();
 
             services.AddAutoMapper(typeof(DomainToViewModelMappingProfile), typeof(ViewModelToDomainMappingProfile));
 
@@ -55,6 +57,7 @@ namespace DemoCompra.Service.Api
 
         private static void UpdateDatabase(IApplicationBuilder app)
         {
+            // Realizar atualização automática da Base de Dados
             using (var serviceScope = app.ApplicationServices.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 using (var context = serviceScope.ServiceProvider.GetService<CompraContext>())

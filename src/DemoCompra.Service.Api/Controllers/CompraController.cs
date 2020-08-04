@@ -25,18 +25,18 @@ namespace DemoCompra.Service.Api.Controllers
         [HttpGet]
         public async Task<IEnumerable<CompraViewModel>> Get()
         {
-            //CompraViewModel c = new CompraViewModel();
-            //c.Id = Guid.NewGuid();
-            //c.Quantidade = 10;
-            //c.Descricao = "Castanha4";
-
-            //_compraAppService.AdicionarCompra(c);
-
             return await _compraAppService.ObterTodos();
         }
 
-        [HttpPost]
-        public ActionResult CadastrarVenda(CompraViewModel c)
+        [HttpPost("compra")]
+        public ActionResult CadastrarCompra(CompraViewModel c)
+        {
+            _compraAppService.AdicionarCompra(c);
+            return Ok();
+        }
+
+        [HttpPost("atualizar-compra")]
+        public ActionResult AtualizarCompra(CompraViewModel c)
         {
             _compraAppService.AdicionarCompra(c);
             return Ok();

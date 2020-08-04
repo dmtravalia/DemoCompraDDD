@@ -1,12 +1,14 @@
 ﻿using DemoCompra.Domain.Core.Interfaces;
 using DemoCompra.Domain.Core.Models;
+using System;
 
 namespace DemoCompra.Domain.Models
 {
     public class Compra : Entity, IAggregateRoot
     {
-        public Compra(int quantidade, string descricao)
+        public Compra(Guid id, int quantidade, string descricao)
         {
+            Id = id;
             Quantidade = quantidade;
             Descricao = descricao;
         }

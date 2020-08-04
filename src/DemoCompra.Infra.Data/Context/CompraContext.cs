@@ -1,5 +1,6 @@
 ﻿using DemoCompra.Domain.Core.Interfaces;
 using DemoCompra.Domain.Models;
+using FluentValidation.Results;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace DemoCompra.Infra.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Ignore<ValidationResult>();
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(CompraContext).Assembly);
         }
 

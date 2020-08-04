@@ -10,7 +10,7 @@ namespace DemoCompra.Application.AutoMapper
         {
             CreateMap<CompraViewModel, Compra>()
                 .ConstructUsing(c =>
-                    new Compra(c.Quantidade, c.Descricao));
+                    new Compra(c.Id, c.Quantidade, c.Descricao));
 
         }
     }
